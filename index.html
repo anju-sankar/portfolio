@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anju Sankar | Embedded Systems & Full Stack Engineer</title>
+    <style>
+        :root {
+            --bg-primary: #0a192f;
+            --bg-secondary: #112240;
+            --text-primary: #e6f1ff;
+            --text-secondary: #8892b0;
+            --accent: #64ffda;
+            --accent-glow: rgba(100, 255, 218, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 8rem;
+        }
+
+        .hero span {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-glow);
+        }
+
+        h3.section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-primary);
+        }
+
+        h3.section-title::after {
+            content: '';
+            display: block;
+            width: 200px;
+            height: 1px;
+            background-color: rgba(136, 146, 176, 0.2);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        }
+
+        .skill-category h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--bg-primary);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.85rem;
+            border-radius: 3px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+        }
+
+        .timeline-item {
+            padding: 0 0 2.5rem 2rem;
+            border-left: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--bg-primary);
+            border: 2px solid var(--accent);
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .company {
+            color: var(--accent);
+        }
+
+        .duration {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-item ul {
+            list-style-type: none;
+            color: var(--text-secondary);
+        }
+
+        .timeline-item li::before {
+            content: "▹";
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.75rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s;
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(136, 146, 176, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">ANJU SANKAR</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <span>Hi, my name is</span>
+            <h1>Anju Sankar.</h1>
+            <h2>Bridging Software Systems & Physical Hardware.</h2>
+            <p>I am an Embedded Systems Engineer transitioning from 9 years of robust experience in Full-Stack Software Development. I specialize in combining rigorous system architecture logic with hardware-level logic to construct reliable IoT environments.</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </section>
+
+        <section id="about">
+            <h3 class="section-title">About Me</h3>
+            <p style="color: var(--text-secondary); max-width: 800px;">
+                With close to a decade spent engineering full-stack solutions across automotive and healthcare frameworks, I bring deeply rooted expertise in debugging, systemic modular design, and robust problem-solving. Currently anchoring my capabilities into specialized hardware execution, I handle real-world microcontroller configurations, peripheral interfaces, and IoT operations.
+            </p>
+        </section>
+
+        <section id="skills">
+            <h3 class="section-title">Core Competencies</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Embedded & IoT Hardware</h4>
+                    <div class="skill-tags">
+                        <span class="tag">Embedded C</span>
+                        <span class="tag">PIC16F877A</span>
+                        <span class="tag">ESP32</span>
+                        <span class="tag">STM32 MCU</span>
+                        <span class="tag">GPIO & Timers</span>
+                        <span class="tag">UART, I2C, SPI</span>
+                        <span class="tag">Sensor Interfacing</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Software & Full Stack</h4>
+                    <div class="skill-tags">
+                        <span class="tag">C / C++</span>
+                        <span class="tag">Python (Django)</span>
+                        <span class="tag">JavaScript (ES6+)</span>
+                        <span class="tag">MERN Stack</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js / Express</span>
+                        <span class="tag">REST APIs</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools & DevOps</h4>
+                    <div class="skill-tags">
+                        <span class="tag">AWS (EC2, S3)</span>
+                        <span class="tag">PostgreSQL / MySQL</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Git & GitHub</span>
+                        <span class="tag">CI/CD Pipelines</span>
+                        <span class="tag">MPLAB XC8 / Proteus</span>
+                        <span class="tag">Jira / Postman</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h3 class="section-title">Where I've Worked</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="job-title">Embedded Engineer Intern</div>
+                    <div class="company">Evolve Robotics</div>
+                    <div class="duration">07/2026 - 09/2026 | Kochi, Kerala</div>
+                    <ul>
+                        <li>Designed, programmed and tested microcontroller-based applications using PIC16F877A, ESP32 and Embedded C[cite: 2].</li>
+                        <li>Worked on peripheral interfacing including GPIO, timers, UART, I2C, LCD, keypad and digital sensors[cite: 2].</li>
+                        <li>Developed a PIC16F877A-based keypad access-control application, implementing keypad scanning, LCD interfacing and password verification[cite: 2].</li>
+                        <li>Developed an ESP32 IoT monitoring application for real-time temperature and humidity acquisition using DHT11, Wi-Fi and an embedded web server[cite: 2].</li>
+                        <li>Configured MCU registers and peripheral modules, including Timer2, MSSP/I2C and UART, and performed firmware-level debugging[cite: 2].</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="job-title">Full Stack Developer (MERN)</div>
+                    <div class="company">elSapiens (HaulSync Platform)</div>
+                    <div class="duration">09/2025 - 05/2026 | Kochi, Kerala</div>
+                    <ul>
+                        <li>Collaborated with stakeholders to understand logistics workflows and translate them into scalable technical solutions[cite: 2].</li>
+                        <li>Designed system architecture and API structures for efficient and extensible backend services[cite: 2].</li>
+                        <li>Developed responsive frontend using React and implemented backend services with Node.js and Express[cite: 2].</li>
+                        <li>Modeled and optimized relational data using MySQL with Sequelize ORM[cite: 2].</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="job-title">Team Lead / Senior Software Engineer</div>
+                    <div class="company">Katzion Technologies LLP</div>
+                    <div class="duration">08/2019 - 01/2025</div>
+                    <ul>
+                        <li>Collaborated with clients and design teams to convert Figma prototypes into scalable web applications[cite: 2].</li>
+                        <li>Contributed to solution design and API architecture for seamless frontend-backend integration[cite: 2].</li>
+                        <li>Developed reusable React components for high-traffic platforms and mentored junior developers[cite: 2].</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h3 class="section-title">Featured Projects</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <h4>Industrial Temperature Monitor</h4>
+                        <p>Built a controller where an analog temperature sensor feeds the PIC16F877A's ADC, displayed on an LCD, with a PWM-driven cooling fan that speeds up as temperature rises, and a buzzer/LED tripping at a critical threshold.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/anju-sankar/indus-temp-monitor" target="_blank">GitHub ↗</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div>
+                        <h4>STM32-Based IR Communication System</h4>
+                        <p>Developed an embedded systems project using an STM32 microcontroller, focusing on infrared (IR) interfacing and I2C serial communication to enable communication between connected devices.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/anju-sankar/stm-ir" target="_blank">GitHub ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-content">
+                <h3 class="section-title" style="justify-content: center; margin-bottom: 1rem;">Get In Touch</h3>
+                <h2>What's Next?</h2>
+                <p class="contact-info">
+                    I am currently seeking opportunities as an Embedded / IoT Engineer. Whether you have a question or want to discuss potential roles, my inbox is always open!
+                </p>
+                <a href="mailto:anju.sankar9623@gmail.com" class="btn">Say Hello</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Designed & Built by Anju Sankar © 2026</p>
+    </footer>
+
+</body>
+</html>
